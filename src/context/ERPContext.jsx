@@ -68,6 +68,17 @@ export function ErpProvider ({ children }) {
     }
   }
 
+  const handleLogout = async () => {
+    const res = await fetch('http://localhost:1222/users/logout', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    console.log(res)
+  }
+
   return (
     <ERPContext.Provider
       value={{
@@ -75,7 +86,8 @@ export function ErpProvider ({ children }) {
         setUser,
         handleUser,
         validateUser,
-        setValidateUser
+        setValidateUser,
+        handleLogout
       }}
     >
       {children}
